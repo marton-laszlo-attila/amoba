@@ -1,0 +1,68 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+.gameImputContainer {
+  display: grid;
+  justify-content: center;
+}
+
+.gamePlayContainer {
+  // display: grid;
+  // justify-content: center;
+  // align-items: center;
+
+  .gamePlayInfo {
+    text-align: center;
+
+    .current {
+      background-color: lightblue;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    // display: block;
+    // width: 200px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+
+    tr {
+      padding: 0;
+      margin: 0;
+      border-collapse: collapse;
+
+      td {
+        display: table-cell;
+        border: 1px solid #888;
+        padding: 0;
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+        // border-collapse: collapse;
+        border-spacing: 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #ddd;
+        }
+
+        &.noClick {
+          cursor: default;
+
+          &:hover {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}
