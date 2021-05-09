@@ -1,6 +1,6 @@
 # AMŐBA
 
-Amőba játék
+Amőba játék  
 Készítette: [Márton László Attila](https://github.com/marton-laszlo-attila)
 
 ## A játékról
