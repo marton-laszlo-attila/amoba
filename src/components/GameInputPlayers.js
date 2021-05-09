@@ -1,15 +1,19 @@
 import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-// export default function GameInputPlayers({ handleChange, position, players, gameData, setGameData }) {
+const sign = ["O", "X", "M", "V", "D", "E", "T"];
+
 export default function GameInputPlayers({ handleChange, position, players, data }) {
-  const [playersData, setPlayersData] = useState([...data]);
-  const sign = ["O", "X", "M", "V", "D", "E", "T"];
+  const [playersData, setPlayersData] = useState(data);
+
+  const save = (data) => {
+    handleChange({ target: { id: "data", value: data } }, 2);
+  }
 
   useEffect(() => {
-    // console.log('players data imit: ', playersData.length, players);
-    let oldPlayersData = [...playersData];
 
+    // setting basis parameters
+    let oldPlayersData = [...data];
     for (let i = oldPlayersData.length; i < players; i++) {
       oldPlayersData.push({
         id: i,
@@ -19,40 +23,30 @@ export default function GameInputPlayers({ handleChange, position, players, data
       });
     }
 
-    if (players < playersData.length) oldPlayersData.splice(players, playersData.length - players);
-    if (playersData.length) save(oldPlayersData);
+    // if change players number
+    if (players < data.length) oldPlayersData.splice(players, data.length - players);
+    if (data.length) save(oldPlayersData);
 
     setPlayersData(oldPlayersData)
 
-    // ha visszalép a menübe, és ki vannak töltve a név mezők, akkor ment
-    // console.log('v ', validation(oldPlayersData), oldPlayersData);
-    // if (oldPlayersData.length && validation(oldPlayersData)) save(playersData);
-
   }, [players])
 
-  const handleChangeData = (t, p, i) => {
-    // console.log(t.target.value)
-    let oldPlayersData = [...playersData];
-    oldPlayersData[p][i] = t.target.value;
-    setPlayersData(oldPlayersData);
-
-    save(oldPlayersData);
-
-    // if (validation(playersData)) save(oldPlayersData, 3);
-    // else save(0, 3);
-    // handleChange({ target: { id: "data", value: playersData } }, 3);
-  }
 
   const validation = (data) => {
     return data.filter(item => item.name !== "").length === data.length ? true : false;
   }
 
-  const save = (data) => {
-    handleChange({ target: { id: "data", value: data } }, 2);
+  // is change player data
+  const handleChangeData = (t, p, i) => {
+    let oldPlayersData = [...playersData];
+    oldPlayersData[p][i] = t.target.value;
+    setPlayersData(oldPlayersData);
+    save(oldPlayersData);
   }
 
+
+
   return <>
-    {/* {console.log("playesrs ", playersData)} */}
     {
       playersData
         .map((item1, index1) =>
@@ -65,7 +59,6 @@ export default function GameInputPlayers({ handleChange, position, players, data
               type="text"
               id={`ne${item1.id}`}
               disabled={position < 2 ? true : false}
-              // onChange={handleChangeData}
               onChange={(t) => handleChangeData(t, index1, "name")}
               value={item1.name}
             />
@@ -79,7 +72,7 @@ export default function GameInputPlayers({ handleChange, position, players, data
               >
                 {
                   sign
-                    .map((item2, index2) =>
+                    .map((item2) =>
                       <option
                         key={uuidv4()}
                         value={item2}

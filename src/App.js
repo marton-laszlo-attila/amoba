@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+
 import GameInput from "./components/GameInput";
 import PlayGame from "./components/PlayGame";
 
 import './css/style.css';
 
 function App() {
-  const [start, setStart] = useState(1);
+  const [start, setStart] = useState(true);
   const [status, setStatus] = useState(false);
   const [pos, setPos] = useState(1);
   const [init, setInit] = useState(true);
@@ -13,14 +14,15 @@ function App() {
   const [gameData, setGameData] = useState({});
 
   const reStart = (s) => {
-    console.log("restart");
-
+    // new game
     switch (s) {
+      // with set parameters 
       case "new":
         setInit(!init)
         setStatus(true);
         setWin(false);
         break;
+      // with new parameters
       case "menu":
         setStatus(false);
         setWin(false);
@@ -32,12 +34,12 @@ function App() {
   }
 
   useEffect(() => {
-    setStart(0);
+    setStart(false);
   }, [])
 
   return (
-    <div className="App">
-      <h1 className={start && "StartH1"}>Amőba</h1>
+    <div className={start ? "StartAppContainer" : "appContainer"}>
+      <h1 className={start ? "StartH1" : ""}>Amőba</h1>
       {!status && <GameInput pos={pos} gameData={gameData} start={start} setGameData={setGameData} setStatus={setStatus} />}
       {status && <PlayGame gameData={gameData} init={init} setInit={setInit} reStart={reStart} win={win} setWin={setWin} />}
     </div>

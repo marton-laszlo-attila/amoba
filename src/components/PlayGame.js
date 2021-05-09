@@ -5,8 +5,6 @@ import { v4 as uuidv4 } from 'uuid';
 export default function PlayGame({ gameData, win, setWin, init, reStart }) {
   const [current, setCurrent] = useState(0);
   const [playData, setPlayData] = useState([]);
-  // const [init, setInit] = useState(true);
-  // const [win, setWin] = useState(false);
 
   const check = Array(gameData.data.length).fill(0).map((item, index) => (index + 1).toString().repeat(gameData.hit));
 
@@ -18,10 +16,9 @@ export default function PlayGame({ gameData, win, setWin, init, reStart }) {
     setPlayData(playDataInit);
     setCurrent(0);
 
-  }, [init])
+  }, [init, gameData.net])
 
   const handleCellClick = (c) => {
-    // console.log('click', c)
     const pos = c.split('x');
     let oldPlayData = [...playData];
     oldPlayData[pos[0]][pos[1]] = current + 1;
@@ -33,33 +30,49 @@ export default function PlayGame({ gameData, win, setWin, init, reStart }) {
 
   const find = () => {
 
-    const playDataRotated = (playData) => {
-      let summax = (playData.length + playData[0].length - 1) * 2; // max index of diagonal matrix
+    // diagonal rotation function
+    const playDataRotated = (playData, type) => {
+      let summax = (playData.length + playData[0].length - 1); // max index of diagonal matrix
       let rotated = []; // initialize to an empty matrix of the right size
       for (let i = 0; i < summax; ++i) rotated.push([]);
       // Fill it up by partitioning the original matrix.
-      for (let j = 0; j < playData[0].length; ++j)
-        for (let i = 0; i < playData.length; ++i) rotated[i + j].push(playData[i][j]);
+      if (type === "left")
+        for (let j = 0; j < playData[0].length; ++j)
+          for (let i = 0; i < playData.length; ++i) rotated[i + j].push(playData[i][j]);
 
-      for (let j = 0; j < playData[0].length; ++j)
-        for (let i = 0; i < playData.length; ++i) rotated[i + j + summax / 2].push(playData[j][playData.length - i - 1]);
+      if (type === "right")
+        for (let j = 0; j < playData[0].length; ++j)
+          for (let i = 0; i < playData.length; ++i) rotated[i + j].push(playData[j][playData.length - i - 1]);
+
       return rotated.map(item => item.join('')).join('|');
     }
 
-    let data = [
-      // row és column
-      ...playData.map((item, index) => [item.join(''), playData.map(row => row[index]).join('')].join('|')),
-      // diagonal
-      playDataRotated(playData)
-    ].join('|')
+    let netData = [];
 
-    if (check.filter(item => data.includes(item)).length) return true;
+    // linear data
+    netData.push([...playData.map((item, index) => item.join(''))].join('|'));
+    netData.push([...playData.map((item, index) => playData.map(row => row[index]).join(''))].join('|'));
 
-    return false;
+    // diagonal data
+    netData.push(playDataRotated(playData, 'left'));
+    netData.push(playDataRotated(playData, 'right'));
+
+    // default hit
+    let hit = false;
+
+    // check hit
+    check
+      .forEach((st, player) => {
+        netData
+          .forEach((item, index) => {
+            if (item.indexOf(st) > -1) hit = { player: player, index: index, pos: item.indexOf(st) }
+          });
+      });
+
+    return hit ? true : false;
   }
 
   return <div className="gamePlayContainer">
-    {/* {console.log('rend --- ', playData)} */}
     <div className="gamePlayInfo">
       <div className="gamePlayInfoPlayers">
         {
@@ -76,7 +89,6 @@ export default function PlayGame({ gameData, win, setWin, init, reStart }) {
     </div>
     <table>
       <tbody>
-        {/* {console.log("--- ", playData)} */}
         {
           playData
             .map((row, index1) => <tr key={uuidv4()}>
@@ -97,11 +109,11 @@ export default function PlayGame({ gameData, win, setWin, init, reStart }) {
         }
       </tbody>
     </table>
-    {win &&
-      <div className="gameWin">
-        <button className="gameWinNew" onClick={() => reStart("new")}>Új menet</button>
-        <button className="gameWinMenu" onClick={() => reStart("menu")}>Menü</button>
-      </div>
-    }
+    {/* {win && */}
+    <div className={`gameWin${!win ? ' gameWinHidden' : ''}`}>
+      <button className="gameWinNew" onClick={() => reStart("new")}>Új menet</button>
+      <button className="gameWinMenu" onClick={() => reStart("menu")}>Menü</button>
+    </div>
+    {/* } */}
   </div>
 }

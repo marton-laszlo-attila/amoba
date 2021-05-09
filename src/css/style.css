@@ -32,15 +32,50 @@ body {
   font-size: 76px;
   letter-spacing: 2px;
   color: #00000090;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  -webkit-transition: all 2s;
-  transition: all 2s;
+  -webkit-animation: zoomIn 3s ease;
+          animation: zoomIn 3s ease;
 }
 
-#root h1.StartH1 {
-  -webkit-transform: scale(100);
-          transform: scale(100);
+@-webkit-keyframes zoomIn {
+  0% {
+    -webkit-transform: scale(100, 100);
+            transform: scale(100, 100);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  33% {
+    -webkit-transform: scale(100, 100);
+            transform: scale(100, 100);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    -webkit-transform: scale(100, 100);
+            transform: scale(100, 100);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  33% {
+    -webkit-transform: scale(100, 100);
+            transform: scale(100, 100);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+            transform: scale(1, 1);
+  }
 }
 
 #root button {
@@ -256,6 +291,13 @@ body {
       -ms-flex-align: stretch;
           align-items: stretch;
   margin-top: 20px;
+  opacity: 1;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#root .gamePlayContainer .gameWin.gameWinHidden {
+  opacity: 0;
 }
 
 #root .gamePlayContainer .gameWin h2 {
