@@ -9,12 +9,16 @@ A klasszikus amőba játék React-ben elkészítve.
 
 ## Indítás
 
-Fejlesztési módban futtathatja az alkalmazást:
+### Fejlesztési módban futtathatja az alkalmazást:
 
 <pre><code>npm start</code></pre>
 
 Nyissa meg [http://localhost:3000](http://localhost:3000) hogy megtekinthesse a böngészőben.
 
-Vagy követlenül nyissa meg a Docker linken:
+### Vagy követlenül nyissa meg a Netfly linken:
 
-[http://localhost:3000](http://localhost:3000)
+[AMŐBA játék](https://6097eca57d651ba39a88527a--gracious-bartik-ca7d1e.netlify.app/)
+
+### Licenc
+
+MIT License
