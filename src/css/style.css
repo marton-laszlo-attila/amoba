@@ -25,8 +25,8 @@ body {
   position: relative;
   -webkit-perspective: 300px;
           perspective: 300px;
-  -webkit-perspective-origin: center 30vh;
-          perspective-origin: center 30vh;
+  -webkit-perspective-origin: center 20vh;
+          perspective-origin: center 20vh;
 }
 
 #root h1 {
