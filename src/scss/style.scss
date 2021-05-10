@@ -17,31 +17,27 @@ body {
   align-items: center;
   height: 80vh;
   position: relative;
+  perspective: 300px;
+  perspective-origin: center 30vh;
 
   h1 {
+    position: relative;
     text-align: center;
     text-transform: uppercase;
     font-family: "Righteous", cursive;
     font-size: 76px;
     letter-spacing: 2px;
     color: #00000090;
-    animation: zoomIn 3s ease;
+    animation: slide-in-bck-center 3s ease-in-out both;
 
-    @keyframes zoomIn {
+    @keyframes slide-in-bck-center {
       0% {
-        transform: scale(100, 100);
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
-      }
-      33% {
-        transform: scale(100, 100);
-        width: 100vw;
-        height: 100vh;
-        overflow: hidden;
+        transform: translateZ(300px);
+        opacity: 0;
       }
       100% {
-        transform: scale(1, 1);
+        transform: translateZ(0);
+        opacity: 1;
       }
     }
   }

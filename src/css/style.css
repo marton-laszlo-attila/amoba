@@ -23,58 +23,47 @@ body {
           align-items: center;
   height: 80vh;
   position: relative;
+  -webkit-perspective: 300px;
+          perspective: 300px;
+  -webkit-perspective-origin: center 30vh;
+          perspective-origin: center 30vh;
 }
 
 #root h1 {
+  position: relative;
   text-align: center;
   text-transform: uppercase;
   font-family: "Righteous", cursive;
   font-size: 76px;
   letter-spacing: 2px;
   color: #00000090;
-  -webkit-animation: zoomIn 3s ease;
-          animation: zoomIn 3s ease;
+  -webkit-animation: slide-in-bck-center 3s ease-in-out both;
+          animation: slide-in-bck-center 3s ease-in-out both;
 }
 
-@-webkit-keyframes zoomIn {
+@-webkit-keyframes slide-in-bck-center {
   0% {
-    -webkit-transform: scale(100, 100);
-            transform: scale(100, 100);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-  33% {
-    -webkit-transform: scale(100, 100);
-            transform: scale(100, 100);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    -webkit-transform: translateZ(300px);
+            transform: translateZ(300px);
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
   }
 }
 
-@keyframes zoomIn {
+@keyframes slide-in-bck-center {
   0% {
-    -webkit-transform: scale(100, 100);
-            transform: scale(100, 100);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-  }
-  33% {
-    -webkit-transform: scale(100, 100);
-            transform: scale(100, 100);
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+    -webkit-transform: translateZ(300px);
+            transform: translateZ(300px);
+    opacity: 0;
   }
   100% {
-    -webkit-transform: scale(1, 1);
-            transform: scale(1, 1);
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
   }
 }
 
