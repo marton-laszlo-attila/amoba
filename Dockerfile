@@ -1,6 +1,22 @@
-FROM node:12-alpine
+# pull the base image
+FROM node:alpine
+
+# set the working direction
 WORKDIR /app
-COPY . .
+
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm config set package-lock false
 RUN npm install
-EXPOSE 80
-CMD [ "node", "server.js" ]
+
+# add app
+COPY . ./
+
+EXPOSE 3000
+# start app
+CMD ["npm", "start"]
