@@ -44,8 +44,6 @@ export default function GameInputPlayers({ handleChange, position, players, data
     save(oldPlayersData);
   }
 
-
-
   return <>
     {
       playersData

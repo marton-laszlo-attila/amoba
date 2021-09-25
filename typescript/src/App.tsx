@@ -11,9 +11,14 @@ function App() {
   const [pos, setPos] = useState(1);
   const [init, setInit] = useState(true);
   const [win, setWin] = useState(false);
-  const [gameData, setGameData] = useState({});
+  const [gameData, setGameData] = useState({
+    hit: 0,
+    data: [{}],
+    players: '',
+    net: 0
+  });
 
-  const reStart = (s) => {
+  const reStart = (s: string) => {
     // new game
     switch (s) {
       // with set parameters 
@@ -41,7 +46,7 @@ function App() {
     <div className={start ? "StartAppContainer" : "appContainer"}>
       <h1 className={start ? "StartH1" : ""}>Amőba</h1>
       {!status && <GameInput pos={pos} gameData={gameData} start={start} setGameData={setGameData} setStatus={setStatus} />}
-      {status && <PlayGame gameData={gameData} init={init} setInit={setInit} reStart={reStart} win={win} setWin={setWin} />}
+      {status && <PlayGame gameData={gameData} init={init} reStart={reStart} win={win} setWin={setWin} />}
     </div>
   );
 }

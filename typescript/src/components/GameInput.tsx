@@ -3,15 +3,37 @@ import { v4 as uuidv4 } from 'uuid';
 
 import GameInputPlayers from "./GameInputPlayers";
 
-export default function GameInput({ gameData, setGameData, setStatus, pos, start }) {
+type gameDataType = {
+  hit: number,
+  data: object[],
+  players: string,
+  net: number
+}
+
+type GameInputProps = {
+  gameData: gameDataType, 
+  setGameData: Function, 
+  setStatus: Function, 
+  pos: number, 
+  start: boolean
+}
+
+type tType = {
+  target: {
+  value: any
+  id: any
+  }
+}
+
+export default function GameInput({ gameData, setGameData, setStatus, pos, start }: GameInputProps) {
   const [position, setPosition] = useState(pos);
 
   // change imput field
-  const handleChange = (t, pos) => {
+  const handleChange = (t: tType, pos: number) => {
     const value = t.target.value;
     const id = t.target.id;
-
-    let oldGameData = { ...gameData };
+    console.log(id)
+    let oldGameData: any = { ...gameData };
     oldGameData[id] = id === "data" ? value : parseInt(value);
 
     // create hit parameters
@@ -27,12 +49,12 @@ export default function GameInput({ gameData, setGameData, setStatus, pos, start
     setPosition(pos);
   }
 
-  const handleStart = (t) => {
+  const handleStart = () => {
     setStatus(true);
   }
 
   // players data validation
-  const validation = (data) => {
+  const validation = (data: [{name: string}]) => {
     return data.filter(item => item.name !== "").length === data.length ? true : false;
   }
 
