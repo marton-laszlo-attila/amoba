@@ -1,0 +1,255 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+body {
+  background-image: url(./img/back.png);
+}
+
+#root {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  position: relative;
+  perspective: 300px;
+  perspective-origin: center 20vh;
+
+  h1 {
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Righteous", cursive;
+    font-size: 76px;
+    letter-spacing: 2px;
+    color: #00000090;
+    animation: slide-in-bck-center 3s ease-in-out both;
+
+    @keyframes slide-in-bck-center {
+      0% {
+        transform: translateZ(300px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateZ(0);
+        opacity: 1;
+      }
+    }
+  }
+
+  button {
+    box-shadow: 0px 1px 0px 0px #f0f7fa;
+    background: linear-gradient(to bottom, #7de704 5%, #335f0190 100%);
+    background-color: #7de704;
+    border-radius: 6px;
+    width: 100%;
+    border: 1px solid #8d590260;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 0px -1px 0px #335f0190;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+
+    &:hover {
+      background: linear-gradient(to bottom, #335f0190 5%, #7de704 100%);
+      text-shadow: 0px 1px 0px #335f0190;
+    }
+
+    &:active {
+      position: relative;
+      top: 1px;
+    }
+  }
+
+  .gameInputContainer {
+    background-color: #00800010;
+    border: 4px solid #00800030;
+    border-radius: 15px;
+    padding: 20px 20px 10px;
+    transform: scaleY(1);
+    transform-origin: top center;
+    transition: transform 1s 3s;
+
+    &.startGameInputContainer {
+      transform: scaleY(0);
+    }
+
+    .gameInputField {
+      margin: 0 0 10px;
+      width: 100%;
+      max-height: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 1s;
+
+      input,
+      select {
+        border: 1px solid #00000090;
+        border-radius: 3px;
+        background-color: #00800020;
+        padding: 3px;
+      }
+
+      option:disabled {
+        background-color: #00000040;
+      }
+
+      &.net,
+      &.players {
+        select {
+          width: 100px;
+        }
+      }
+
+      &.data {
+        flex-direction: column;
+        align-items: stretch;
+
+        .playersData {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 5px;
+
+          input {
+            width: 145px;
+          }
+
+          div {
+            label {
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+
+      &.hidden {
+        max-height: 0;
+        margin: 0;
+        transition: all 1s;
+
+        * {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .gamePlayContainer {
+    background-color: #00800010;
+    border: 4px solid #00800030;
+    border-radius: 15px;
+    padding: 20px;
+
+    .gamePlayInfo {
+      text-align: center;
+
+      .current {
+        background-color: #00800070;
+        color: #fff;
+      }
+
+      .win {
+        background-color: #ff9800;
+        text-shadow: 0px 0px 3px #462a00;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing: 1px;
+
+        span {
+          background-color: transparent;
+        }
+      }
+
+      .gamePlayInfoPlayers {
+        margin-bottom: 10px;
+
+        div {
+          padding: 8px;
+          border-radius: 15px 15px 15px 15px;
+        }
+      }
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 20px auto 0;
+      background-color: #ffffff50;
+
+      tr {
+        padding: 0;
+        margin: 0;
+        border-collapse: collapse;
+
+        td {
+          display: table-cell;
+          border: 1px solid #00000040;
+          padding: 0;
+          width: 28px;
+          height: 28px;
+          font-size: 20px;
+          text-align: center;
+          justify-content: center;
+          border-spacing: 0;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #ffffff70;
+          }
+
+          &.noClick {
+            cursor: default;
+
+            &:hover {
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    .gameWin {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      margin-top: 20px;
+      opacity: 1;
+      transition: all 0.5s;
+
+      &.gameWinHidden {
+        opacity: 0;
+      }
+
+      h2 {
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Righteous", cursive;
+        font-size: 56px;
+        letter-spacing: 2px;
+        color: #00000090;
+      }
+
+      .gameWinName {
+        text-align: center;
+        font-size: 18px;
+        padding: 50px 0;
+      }
+
+      button {
+        width: 47%;
+      }
+    }
+  }
+}
