@@ -65,7 +65,7 @@ export default function GameInputPlayers({ handleChange, position, players, data
     save(oldPlayersData);
   }
 
-  return <>
+  return <div>
     {
       playersData
         .map((item1:dataType, index1) =>
@@ -106,5 +106,5 @@ export default function GameInputPlayers({ handleChange, position, players, data
           </div>)
     }
     {!validation(playersData) && <div>Töltsd ki a név mezőket!</div>}
-  </>
+  </div>
 }

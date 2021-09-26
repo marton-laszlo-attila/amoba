@@ -5,7 +5,7 @@ Készítette: [Márton László Attila](https://github.com/marton-laszlo-attila)
 
 ## A játékról
 
-A klasszikus amőba játék React-ben elkészítve.
+A klasszikus amőba játék React-ben elkészítve. Typescript változat.
 
 ## Indítás
 
@@ -15,10 +15,10 @@ A klasszikus amőba játék React-ben elkészítve.
 
 Nyissa meg [http://localhost:3000](http://localhost:3000) hogy megtekinthesse a böngészőben.
 
-### Vagy követlenül nyissa meg a Netfly linken:
+### Tesztek futtatása
 
-[AMŐBA játék](https://gracious-bartik-ca7d1e.netlify.app/)
+<pre><code>npm run test</code></pre>
 
-### Licenc
+## Licenc
 
 MIT License

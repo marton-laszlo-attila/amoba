@@ -1,7 +1,12 @@
 module.exports = {
   presets: [
-    ['@babel/preset-env', { targets: { node: 'current' } }],
-    '@babel/preset-typescript',
-    // 'ts-jest',
+    "@babel/preset-env",
+    ["@babel/preset-react", {
+      "runtime": "automatic"
+    }],
+    "@babel/preset-typescript"
   ],
+  plugins: [
+    ["@babel/plugin-transform-runtime"]
+  ]
 };
