@@ -13,8 +13,8 @@ function App() {
   const [win, setWin] = useState(false);
   const [gameData, setGameData] = useState({
     hit: 0,
-    data: [{}],
-    players: '',
+    data: [{sign:'', name: ''}],
+    players: 0,
     net: 0
   });
 

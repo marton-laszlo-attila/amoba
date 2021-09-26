@@ -6,7 +6,7 @@ import GameInputPlayers from "./GameInputPlayers";
 type gameDataType = {
   hit: number,
   data: object[],
-  players: string,
+  players: number,
   net: number
 }
 
@@ -29,11 +29,11 @@ export default function GameInput({ gameData, setGameData, setStatus, pos, start
   const [position, setPosition] = useState(pos);
 
   // change imput field
-  const handleChange = (t: tType, pos: number) => {
+  const handleChange = (t:tType, pos:number) => {
     const value = t.target.value;
     const id = t.target.id;
-    console.log(id)
-    let oldGameData: any = { ...gameData };
+    
+    let oldGameData:any = { ...gameData };
     oldGameData[id] = id === "data" ? value : parseInt(value);
 
     // create hit parameters
