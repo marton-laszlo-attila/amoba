@@ -1,11 +1,18 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
-import GameInputPlayers from "./GameInputPlayers";
+import GameInputPlayers from "./GameInputPlayers"; 
+
+type dataType = {
+  name: string,
+  key: string,
+  id: number,
+  sign: string
+}
 
 type gameDataType = {
   hit: number,
-  data: object[],
+  data: dataType[],
   players: number,
   net: number
 }
@@ -108,7 +115,13 @@ export default function GameInput({ gameData, setGameData, setStatus, pos, start
       />
     </div>
     <div className={`gameInputField start${position < 4 ? ' hidden' : ''}`}>
-      <button onClick={handleStart} type="button" disabled={position < 4 ? true : false}>Start</button>
+      <button 
+      onClick={handleStart} 
+      type="button" 
+      disabled={position < 4 ? true : false}
+      >
+        Start
+      </button>
     </div>
   </div>
 }

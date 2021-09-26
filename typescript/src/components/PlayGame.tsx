@@ -21,6 +21,7 @@ type PlayGameProps = {
   reStart: Function
 }
 
+
 export default function PlayGame({ gameData, win, setWin, init, reStart }: PlayGameProps) {
   const [current, setCurrent] = useState(0);
   const [playData, setPlayData] = useState([[0]]);

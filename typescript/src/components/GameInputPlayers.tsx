@@ -3,10 +3,31 @@ import { v4 as uuidv4 } from 'uuid';
 
 const sign = ["O", "X", "M", "V", "D", "E", "T"];
 
-export default function GameInputPlayers({ handleChange, position, players, data }) {
+type dataType = {
+  name: string,
+  key: string,
+  id: number,
+  sign: string
+}
+
+type GameInputPlayersType = {
+  handleChange: Function,
+  position: number,
+  players: number,
+  data: dataType[]
+}
+
+type tType = {
+  target: {
+  value: any
+  id: any
+  }
+}
+
+export default function GameInputPlayers({ handleChange, position, players, data }:GameInputPlayersType) {
   const [playersData, setPlayersData] = useState(data);
 
-  const save = (data) => {
+  const save = (data:object[]) => {
     handleChange({ target: { id: "data", value: data } }, 2);
   }
 
@@ -32,13 +53,13 @@ export default function GameInputPlayers({ handleChange, position, players, data
   }, [players])
 
 
-  const validation = (data) => {
+  const validation = (data:dataType[]) => {
     return data.filter(item => item.name !== "").length === data.length ? true : false;
   }
 
   // is change player data
-  const handleChangeData = (t, p, i) => {
-    let oldPlayersData = [...playersData];
+  const handleChangeData = (t:tType, p:number, i:any) => {
+    let oldPlayersData:any = [...playersData];
     oldPlayersData[p][i] = t.target.value;
     setPlayersData(oldPlayersData);
     save(oldPlayersData);
@@ -47,7 +68,7 @@ export default function GameInputPlayers({ handleChange, position, players, data
   return <>
     {
       playersData
-        .map((item1, index1) =>
+        .map((item1:dataType, index1) =>
           <div
             className="playersData"
             key={item1.key}
