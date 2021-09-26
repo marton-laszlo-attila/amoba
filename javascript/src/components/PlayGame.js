@@ -82,7 +82,7 @@ export default function PlayGame({ gameData, win, setWin, init, reStart }) {
               key={uuidv4()}
             >
               {(win && index === current) && <span className="win">Győzött</span>} {item.name} ({item.sign})
-          </div>
+            </div>
           )}
       </div>
       <div>Az győz, akinek először összejön egymás mellett vízszintesen,<br /> függőlegesen vagy átlósan {gameData.hit} jel</div>
