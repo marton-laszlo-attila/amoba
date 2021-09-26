@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import GameInputPlayers from "./GameInputPlayers";
 
 export default function GameInput({ gameData, setGameData, setStatus, pos, start }) {
+
   const [position, setPosition] = useState(pos);
 
   // change imput field

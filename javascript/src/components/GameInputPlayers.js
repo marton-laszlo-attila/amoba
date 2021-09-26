@@ -11,7 +11,6 @@ export default function GameInputPlayers({ handleChange, position, players, data
   }
 
   useEffect(() => {
-
     // setting basis parameters
     let oldPlayersData = [...data];
     for (let i = oldPlayersData.length; i < players; i++) {

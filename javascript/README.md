@@ -5,7 +5,7 @@ Készítette: [Márton László Attila](https://github.com/marton-laszlo-attila)
 
 ## A játékról
 
-A klasszikus amőba játék React-ben elkészítve.
+A klasszikus amőba játék React-ben elkészítve. JavaScript változat.
 
 ## Indítás
 
