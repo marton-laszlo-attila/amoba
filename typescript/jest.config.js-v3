@@ -1,0 +1,25 @@
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+const { defaults } = require('jest-config');
+
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  verbose: true,
+  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "ts-jest"
+  },
+};
+
+// module.exports = {
+//   "roots": [
+//     "<rootDir>/src"
+//   ],
+//   "testMatch": [
+//     "**/__tests__/**/*.+(ts|tsx|js)",
+//     "**/?(*.)+(spec|test).+(ts|tsx|js)"
+//   ],
+//   "transform": {
+//     "^.+\\.(ts|tsx)$": "ts-jest"
+//   },
+// }
