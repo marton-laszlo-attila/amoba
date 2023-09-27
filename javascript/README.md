@@ -1,7 +1,10 @@
 # AMŐBA
 
-Amőba játék  
+Amőba játék
 Készítette: [Márton László Attila](https://github.com/marton-laszlo-attila)
+
+![alt text](https://github.com/marton-laszlo-attila/amoba/tree/main/amoba_01.jpg?raw=true)
+![alt text](https://github.com/marton-laszlo-attila/amoba/tree/main/amoba_02.jpg?raw=true)
 
 ## A játékról
 
