@@ -3,8 +3,7 @@
 Amőba játék
 Készítette: [Márton László Attila](https://github.com/marton-laszlo-attila)
 
-![alt text](https://github.com/marton-laszlo-attila/amoba/tree/main/amoba_01.jpg?raw=true)
-![alt text](https://github.com/marton-laszlo-attila/amoba/tree/main/amoba_02.jpg?raw=true)
+<div style="display:flex;"><img src='../amoba_01.png' width="450" alt='Screenshot' />  <img  width="450" src='../amoba_02.png' alt='Screenshot' /></div>
 
 ## A játékról
 
